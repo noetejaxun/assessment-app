@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -14,6 +15,7 @@ namespace AssessmentApp.Models
 
         [ForeignKey("OptionId")]
         public OptionModel Option { get; set; }
+
         [ForeignKey("QuestionId")]
         public QuestionModel Question { get; set; }
     }

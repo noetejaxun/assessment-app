@@ -17,6 +17,16 @@ namespace AssessmentApp.Context
 
         public DemoContext(DbContextOptions<DemoContext> options) : base(options)
         {
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AssessmentQuestionModel>()
+                .HasKey(c => new { c.AssessmentId, c.QuestionId });
+
+            modelBuilder.Entity<QuestionOptionModel>()
+                .HasKey(c => new { c.QuestionId, c.OptionId });
         }
     }
 }
