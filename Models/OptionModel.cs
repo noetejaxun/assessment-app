@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace AssessmentApp.Models
 {
@@ -14,7 +12,6 @@ namespace AssessmentApp.Models
         public string Answer { get; set; }
         public bool Disabled { get; set; }
 
-        [ForeignKey("OptionId")]
-        public QuestionModel Question { get; set; }
+        public ICollection<QuestionOptionModel> QuestionOptions { get; set; }
     }
 }

@@ -66,6 +66,7 @@ namespace AssessmentApp.Migrations
             modelBuilder.Entity("AssessmentApp.Models.OptionModel", b =>
                 {
                     b.Property<Guid>("OptionId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Answer")
@@ -157,15 +158,6 @@ namespace AssessmentApp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AssessmentApp.Models.OptionModel", b =>
-                {
-                    b.HasOne("AssessmentApp.Models.QuestionModel", "Question")
-                        .WithMany()
-                        .HasForeignKey("OptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("AssessmentApp.Models.QuestionModel", b =>
                 {
                     b.HasOne("AssessmentApp.Models.QuestionTypeModel", "QuestionType")
@@ -178,7 +170,7 @@ namespace AssessmentApp.Migrations
             modelBuilder.Entity("AssessmentApp.Models.QuestionOptionModel", b =>
                 {
                     b.HasOne("AssessmentApp.Models.OptionModel", "Option")
-                        .WithMany()
+                        .WithMany("QuestionOptions")
                         .HasForeignKey("OptionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
