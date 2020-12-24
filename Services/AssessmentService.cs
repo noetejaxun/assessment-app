@@ -11,9 +11,9 @@ namespace AssessmentApp.Services
 {
     public class AssessmentService : IAssessmentService
     {
-        private readonly DemoContext _context;
+        private readonly ModelContext _context;
 
-        public AssessmentService(DemoContext context)
+        public AssessmentService(ModelContext context)
         {
             _context = context;
         }
@@ -46,7 +46,8 @@ namespace AssessmentApp.Services
 
         public async Task DeleteAsync(AssessmentModel iAssessment)
         {
-            var entity = _context.Assessments.FirstOrDefault(item => item.AssessmentId == iAssessment.AssessmentId);
+            var entity = _context.Assessments
+                         .FirstOrDefault(item => item.AssessmentId == iAssessment.AssessmentId);
 
             if (entity != null)
             {
@@ -73,7 +74,8 @@ namespace AssessmentApp.Services
 
         public async Task UpdateAsync(AssessmentModel iAssessment)
         {
-            var entity = _context.Assessments.FirstOrDefault(item => item.AssessmentId == iAssessment.AssessmentId);
+            var entity = _context.Assessments
+                         .FirstOrDefault(item => item.AssessmentId == iAssessment.AssessmentId);
 
             if (entity != null)
             {

@@ -14,7 +14,6 @@ namespace AssessmentApp.Models
         public bool Disabled { get; set; }
 
 
-
         public ICollection<QuestionOptionModel> QuestionOptions { get; set; }
 
         public ICollection<AssessmentQuestionModel> AssessmentQuestions { get; set; }

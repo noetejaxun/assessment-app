@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AssessmentApp.Context
 {
-    public class DemoContext : DbContext
+    public class ModelContext : DbContext
     {
         public DbSet<AssessmentModel> Assessments { get; set; }
         public DbSet<AssessmentQuestionModel> AssessmentQuestions { get; set; }
@@ -12,9 +12,8 @@ namespace AssessmentApp.Context
         public DbSet<QuestionOptionModel> QuestionOptions { get; set; }
         public DbSet<QuestionTypeModel> QuestionTypes { get; set; }
 
-        public DemoContext(DbContextOptions<DemoContext> options) : base(options)
+        public ModelContext(DbContextOptions<ModelContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
