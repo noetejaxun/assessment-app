@@ -18,16 +18,16 @@ namespace AssessmentApp.Services
             _context = context;
         }
 
-        public async Task<AssessmentModel> CreateAsync(AssessmentModel IAssessment)
+        public async Task<AssessmentModel> CreateAsync(AssessmentModel iAssessment)
         {
             var assessment = new AssessmentModel()
             {
                 AssessmentId = Guid.NewGuid(),
-                Description = IAssessment.Description,
-                StartDate = IAssessment.StartDate,
-                DueDate = IAssessment.DueDate,
-                Disabled = IAssessment.Disabled,
-                TotalPoints = IAssessment.TotalPoints
+                Description = iAssessment.Description,
+                StartDate = iAssessment.StartDate,
+                DueDate = iAssessment.DueDate,
+                Disabled = iAssessment.Disabled,
+                TotalPoints = iAssessment.TotalPoints
             };
 
             var result = await _context.Assessments.AddAsync(assessment);
@@ -44,9 +44,9 @@ namespace AssessmentApp.Services
             };
         }
 
-        public async Task DeleteAsync(AssessmentModel IAssessment)
+        public async Task DeleteAsync(AssessmentModel iAssessment)
         {
-            var entity = _context.Assessments.FirstOrDefault(item => item.AssessmentId == IAssessment.AssessmentId);
+            var entity = _context.Assessments.FirstOrDefault(item => item.AssessmentId == iAssessment.AssessmentId);
 
             if (entity != null)
             {
@@ -71,18 +71,18 @@ namespace AssessmentApp.Services
             });
         }
 
-        public async Task UpdateAsync(AssessmentModel IAssessment)
+        public async Task UpdateAsync(AssessmentModel iAssessment)
         {
-            var entity = _context.Assessments.FirstOrDefault(item => item.AssessmentId == IAssessment.AssessmentId);
+            var entity = _context.Assessments.FirstOrDefault(item => item.AssessmentId == iAssessment.AssessmentId);
 
             if (entity != null)
             {
-                entity.AssessmentId = IAssessment.AssessmentId;
-                entity.Description = IAssessment.Description;
-                entity.StartDate = IAssessment.StartDate;
-                entity.DueDate = IAssessment.DueDate;
-                entity.Disabled = IAssessment.Disabled;
-                entity.TotalPoints = IAssessment.TotalPoints;
+                entity.AssessmentId = iAssessment.AssessmentId;
+                entity.Description = iAssessment.Description;
+                entity.StartDate = iAssessment.StartDate;
+                entity.DueDate = iAssessment.DueDate;
+                entity.Disabled = iAssessment.Disabled;
+                entity.TotalPoints = iAssessment.TotalPoints;
 
                 await _context.SaveChangesAsync();
             }

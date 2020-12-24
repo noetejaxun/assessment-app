@@ -6,9 +6,9 @@ namespace AssessmentApp.Interfaces
 {
     public interface IAssessmentService
     {
-        Task<AssessmentModel> CreateAsync(AssessmentModel IAssessment);
+        Task<AssessmentModel> CreateAsync(AssessmentModel iAssessment);
         Task<IEnumerable<AssessmentModel>> GetAsync();
-        Task UpdateAsync(AssessmentModel IAssessment);
-        Task DeleteAsync(AssessmentModel IAssessment);
+        Task UpdateAsync(AssessmentModel iAssessment);
+        Task DeleteAsync(AssessmentModel iAssessment);
     }
 }
