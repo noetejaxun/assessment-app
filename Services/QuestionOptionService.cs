@@ -43,7 +43,7 @@ namespace AssessmentApp.Services
         {
             var entity = _context.QuestionOptions
                          .FirstOrDefault(item => item.QuestionId == iQuestionOption.QuestionId &&
-                                                 item.OptionId == iQuestionOption.QuestionId);
+                                                 item.OptionId == iQuestionOption.OptionId);
 
             if (entity != null)
             {
@@ -70,7 +70,7 @@ namespace AssessmentApp.Services
         {
             var entity = _context.QuestionOptions
                          .FirstOrDefault(item => item.QuestionId == iQuestionOption.QuestionId &&
-                                                 item.OptionId == iQuestionOption.QuestionId);
+                                                 item.OptionId == iQuestionOption.OptionId);
 
             if (entity != null)
             {

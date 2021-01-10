@@ -23,6 +23,7 @@ namespace AssessmentApp
             builder.Services.AddTransient<IQuestionTypeService, QuestionTypeService>();
             builder.Services.AddTransient<IOptionService, OptionService>();
             builder.Services.AddTransient<IQuestionService, QuestionService>();
+            builder.Services.AddTransient<IQuestionOptionService, QuestionOptionService>();
         }
     }
 }
