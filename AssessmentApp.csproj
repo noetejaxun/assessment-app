@@ -27,9 +27,6 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Functions\AssessmentQuestion\" />
-  </ItemGroup>
   <Target Name="CopyDLLForEntityFramework" AfterTargets="Build">
     <Copy SourceFiles="$(ProjectDir)bin\Debug\netcoreapp3.1\AssessmentApp.dll" DestinationFolder="$(ProjectDir)" />
   </Target>
