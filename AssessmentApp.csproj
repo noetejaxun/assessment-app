@@ -31,7 +31,6 @@
     <Folder Include="Functions\Assessment\" />
     <Folder Include="Functions\AssessmentQuestion\" />
     <Folder Include="Functions\QuestionOption\" />
-    <Folder Include="Functions\Question\" />
   </ItemGroup>
   <Target Name="CopyDLLForEntityFramework" AfterTargets="Build">
     <Copy SourceFiles="$(ProjectDir)bin\Debug\netcoreapp3.1\AssessmentApp.dll" DestinationFolder="$(ProjectDir)" />

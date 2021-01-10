@@ -9,26 +9,26 @@ using Newtonsoft.Json;
 using AssessmentApp.Interfaces;
 using AssessmentApp.Models;
 
-namespace AssessmentApp.Functions.Option
+namespace AssessmentApp.Functions.Question
 {
-    public class UpdateOption
+    public class UpdateQuestion
     {
-        private readonly IOptionService _optionService;
-        public UpdateOption(IOptionService optionService)
+        private readonly IQuestionService _questionService;
+        public UpdateQuestion(IQuestionService questionService)
         {
-            _optionService = optionService;
-        }
+            _questionService = questionService;
 
-        [FunctionName("UpdateOption")]
+        }
+        [FunctionName("UpdateQuestion")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "put", Route = "option")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = "question")] HttpRequest req,
             ILogger log)
         {
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var vm = JsonConvert.DeserializeObject<OptionModel>(requestBody);
+            var vm = JsonConvert.DeserializeObject<QuestionModel>(requestBody);
 
-            await _optionService.UpdateAsync(vm);
-            
+            await _questionService.UpdateAsync(vm);
+
             return new OkResult();
         }
     }

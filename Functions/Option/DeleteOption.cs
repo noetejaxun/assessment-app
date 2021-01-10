@@ -25,8 +25,6 @@ namespace AssessmentApp.Functions.Option
             [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "option")] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var vm = JsonConvert.DeserializeObject<OptionModel>(requestBody);
 
