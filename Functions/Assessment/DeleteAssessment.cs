@@ -9,25 +9,25 @@ using Newtonsoft.Json;
 using AssessmentApp.Interfaces;
 using AssessmentApp.Models;
 
-namespace AssessmentApp.Functions.Question
+namespace AssessmentApp.Functions.Assessment
 {
-    public class DeleteQuestion
+    public class DeleteAssessment
     {
-        private readonly IQuestionService _questionService;
-        public DeleteQuestion(IQuestionService questionService)
+        private readonly IAssessmentService _assessmentService;
+        public DeleteAssessment(IAssessmentService assessmentService)
         {
-            _questionService = questionService;
+            _assessmentService = assessmentService;
         }
 
-        [FunctionName("DeleteQuestion")]
+        [FunctionName("DeleteAssessment")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "question")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "assessment")] HttpRequest req,
             ILogger log)
         {
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var vm = JsonConvert.DeserializeObject<QuestionModel>(requestBody);
+            var vm = JsonConvert.DeserializeObject<AssessmentModel>(requestBody);
 
-            await _questionService.DeleteAsync(vm);
+            await _assessmentService.DeleteAsync(vm);
 
             return new OkResult();
         }

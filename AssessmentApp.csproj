@@ -28,7 +28,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Functions\Assessment\" />
     <Folder Include="Functions\AssessmentQuestion\" />
   </ItemGroup>
   <Target Name="CopyDLLForEntityFramework" AfterTargets="Build">

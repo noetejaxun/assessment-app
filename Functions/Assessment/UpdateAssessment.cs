@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -9,25 +10,25 @@ using Newtonsoft.Json;
 using AssessmentApp.Interfaces;
 using AssessmentApp.Models;
 
-namespace AssessmentApp.Functions.Question
+namespace AssessmentApp.Functions.Assessment
 {
-    public class DeleteQuestion
+    public class UpdateAssessment
     {
-        private readonly IQuestionService _questionService;
-        public DeleteQuestion(IQuestionService questionService)
+        private readonly IAssessmentService _assessmentService;
+        public UpdateAssessment(IAssessmentService assessmentService)
         {
-            _questionService = questionService;
+            _assessmentService = assessmentService;
         }
 
-        [FunctionName("DeleteQuestion")]
+        [FunctionName("UpdateAssessment")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "question")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = "assessment")] HttpRequest req,
             ILogger log)
         {
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var vm = JsonConvert.DeserializeObject<QuestionModel>(requestBody);
+            var vm = JsonConvert.DeserializeObject<AssessmentModel>(requestBody);
 
-            await _questionService.DeleteAsync(vm);
+            await _assessmentService.UpdateAsync(vm);
 
             return new OkResult();
         }

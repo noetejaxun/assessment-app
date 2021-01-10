@@ -8,13 +8,12 @@ using AssessmentApp.Interfaces;
 
 namespace AssessmentApp.Functions.Option
 {
-    public class GetOptions
+    public class GetOption
     {
         private readonly IOptionService _optionService;
-        public GetOptions(IOptionService optionService)
+        public GetOption(IOptionService optionService)
         {
             _optionService = optionService;
-
         }
         [FunctionName("GetOptions")]
         public async Task<IActionResult> Run(
