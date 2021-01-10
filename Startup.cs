@@ -14,11 +14,14 @@ namespace AssessmentApp
         public override void Configure(IFunctionsHostBuilder builder)
         {
             var connectionString = Environment.GetEnvironmentVariable("SqlConnectionString");
-            builder.Services.AddEntityFrameworkNpgsql().AddDbContext<ModelContext>(
-                options => options.UseNpgsql(connectionString));
+            // builder.Services.AddEntityFrameworkNpgsql().AddDbContext<ModelContext>(
+            //     options => options.UseNpgsql(connectionString)); // PosgreSQL
+            builder.Services.AddEntityFrameworkSqlServer().AddDbContext<ModelContext>(
+                options => options.UseSqlServer(connectionString)); // SQL Server
 
             builder.Services.AddTransient<IAssessmentService, AssessmentService>();
             builder.Services.AddTransient<IQuestionTypeService, QuestionTypeService>();
+            builder.Services.AddTransient<IOptionService, OptionService>();            
         }
     }
 }

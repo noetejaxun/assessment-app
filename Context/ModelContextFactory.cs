@@ -9,7 +9,8 @@ namespace AssessmentApp.Context
         public ModelContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ModelContext>();
-            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("SqlConnectionString"));
+            //optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("SqlConnectionString")); // PostgreSQL
+            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("SqlConnectionString")); // SQL Server
 
             return new ModelContext(optionsBuilder.Options);
         }
